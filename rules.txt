@@ -1,0 +1,8 @@
+************** H A N G M A N **************
+Instructions
+1. You have 8 chances.
+2. You have to guess the letters.
+3. If letter is contained in word it will be displayed.
+4. If you guess wrong letter your chance will be reduced.
+5. If you guess the word you will win the game.
+
