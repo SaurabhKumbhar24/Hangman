@@ -6,3 +6,5 @@ Instructions
 4. If you guess wrong letter your chance will be reduced.
 5. If you guess the word you will win the game.
 
+HINT :: Word is a name of Super Hero or Villain
+

@@ -19,7 +19,6 @@ def printRules():
     
     #loop line by line
     for lines in f:
-        
         #printing each line in file
         print(lines)
         
@@ -35,12 +34,8 @@ def load():
     
     #getting file line by line as each line contains different word
     for line in f:
-        
-        #getting word more than len 10
-        if(len(line) > 10):
-            
-            #appending word in list
-            words.append(line)
+        #appending word in list
+        words.append(line)
     
     #loading words    
     print("loading "+str(len(words))+" words...")
@@ -87,26 +82,39 @@ def printDashes(word,guesses):
     #loop through the word 
     for i in word:
         
-        #getting all guesses           
-        for j in guesses:
+        if(i == '-'):
+            print('-',end="")
            
-           #if guessed letter is equal to letter in word
-           if(i == j):
+        elif(i == '.'):
+            print('.',end="")
+            
+        elif(i == "'"):
+            print("'",end="")
+            
+        elif(i == ' '):
+            print(' ',end="")
+                       
+        else:
+            #getting all guesses           
+            for j in guesses:
                
-               #printing letter if equal
-               print(i,end="")
+               #if guessed letter is equal to letter in word
+               if(i == j):
+                   
+                   #printing letter if equal
+                   print(i,end="")
+                   
+                   #counter = 1
+                   cnt = 1
+                   break
                
-               #counter = 1
-               cnt = 1
-               break
-           
-           #else assigning counter 0
-           else:
-               cnt = 0
-        
-        #if counter is 0 print dash
-        if(cnt == 0):
-            print(" _ ",end="")
+               #else assigning counter 0
+               else:
+                   cnt = 0
+            
+            #if counter is 0 print dash
+            if(cnt == 0):
+                print(" _ ",end="")
 
 #Checking if all guesses matches word
 def check(word,guesses):
@@ -143,25 +151,29 @@ def main():
     #printing rules of GAME
     printRules()
     
-    #getting random word as word is in format \nword\n
-    word = getRandomWord()[::-2]
+    #getting random word as word is in format word
+    word = getRandomWord().lower()
+    
+    #if word is in format word\n
+    if(word[-1] == "\n"):
+        word = word[:-1]
+        
+    #if word is in format \nword    
+    if(word[0] == "\n"):
+        word = word[1:]
     
     #printing dashes of len of word
-    for i in range(len(word)-1):
-        print(" _ ",end = "")
+    printDashes(word,[''])
     
     #Total chances is 8
     chance = 8
-    print("\n You have "+str(chance)+" chances left.")
+    print("\n\nYou have "+str(chance)+" chances left.")
     
     #Assigning empty guesses
     guesses = []
     
-    # As word is in format \nword
-    word = word[1:]
-    
     #Printing word to be guessed For Testing Purpose
-    #print("Word to be guessed : ",word)
+    print("Word to be guessed : ",word)
     
     #Loop till GAME Ends
     while(True):
@@ -169,12 +181,14 @@ def main():
         #Checking if guesses and word
         if(check(word,guesses)):
             print("Yeaaah You won the game")
-            drawObject.drawHangman(chance,1)
+            if(chance != 8):
+                drawObject.drawHangman(9,1)
             break
         
         #checking if chance left is 0 and word and guesses
         elif(check(word,guesses) == False and chance == 0):
             print("Game Over")
+            print("Word was "+word)
             drawObject.drawHangman(chance,1)
             break
         
@@ -182,6 +196,8 @@ def main():
             
             #Getting letter from user as Guess
             guessLetter = input("Enter your guess : ")
+            
+            print()
             
             #Appending guess in guesses
             guesses.append(guessLetter)
