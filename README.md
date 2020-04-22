@@ -2,7 +2,7 @@
 
 As everyone is familiar with the game Hangman.
 
-In this words are none but the names of all <h2>SuperHeros</h2> and <h2>SuperVillains</h2> from 
+In this words are none but the names of all <b>SuperHeros</b> and <b>SuperVillains</b> from 
 MARVEL DC and TV Series
 
 This makes the game more challenging.
