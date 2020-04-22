@@ -9,6 +9,7 @@ Dated : 21 April 2020
 
 # Used to get random word
 import random
+import draw as drawObject
 
 #printing Rules
 def printRules():
@@ -168,11 +169,13 @@ def main():
         #Checking if guesses and word
         if(check(word,guesses)):
             print("Yeaaah You won the game")
+            drawObject.drawHangman(chance,1)
             break
         
         #checking if chance left is 0 and word and guesses
         elif(check(word,guesses) == False and chance == 0):
             print("Game Over")
+            drawObject.drawHangman(chance,1)
             break
         
         else:
@@ -189,6 +192,7 @@ def main():
             #if matched indices is 0 lower the chance as guess is wrong
             if(len(Indices) == 0):
                 chance-=1
+                drawObject.drawHangman(chance,0)
             
             #print dashes and word guessed
             printDashes(word,guesses)
@@ -198,166 +202,3 @@ def main():
 
 #Calling Main Function    
 main()
-
-
-##############################  T E S T I N G ################################
-
-'''
-runfile('C:/Users/admin/Downloads/Python Project/hangman.py', 
-wdir='C:/Users/admin/Downloads/Python Project')
-************** H A N G M A N **************
-
-Instructions
-
-1. You have 8 chances.
-
-2. You have to guess the letters.
-
-3. If letter is contained in word it will be displayed.
-
-4. If you guess wrong letter your chance will be reduced.
-
-5. If you guess the word you will win the game.
-
-
-
-loading 167514 words...
- _  _  _  _  _  _  _ 
- You have 8 chances left.
-Word to be guessed :  osrorta
-
-Enter your guess : a
- _  _  _  _  _  _ a
-
- You have 8 chances left.
-
-Enter your guess : o
-o _  _ o _  _ a
-
- You have 8 chances left.
-
-Enter your guess : r
-o _ ror _ a
-
- You have 8 chances left.
-
-Enter your guess : r
-o _ ror _ a
-
- You have 8 chances left.
-
-Enter your guess : s
-osror _ a
-
- You have 8 chances left.
-
-Enter your guess : b
-osror _ a
-
- You have 7 chances left.
-
-Enter your guess : c
-osror _ a
-
- You have 6 chances left.
-
-Enter your guess : t
-osrorta
-
- You have 6 chances left.
-Yeaaah You won the game
-
-runfile('C:/Users/admin/Downloads/Python Project/hangman.py', 
-wdir='C:/Users/admin/Downloads/Python Project')
-************** H A N G M A N **************
-
-Instructions
-
-1. You have 8 chances.
-
-2. You have to guess the letters.
-
-3. If letter is contained in word it will be displayed.
-
-4. If you guess wrong letter your chance will be reduced.
-
-5. If you guess the word you will win the game.
-
-
-
-loading 167514 words...
- _  _  _  _  _  _  _ 
- You have 8 chances left.
-
-Enter your guess : a
- _  _  _  _  _  _  _ 
-
- You have 7 chances left.
-
-Enter your guess : b
- _  _  _  _  _  _  _ 
-
- You have 6 chances left.
-
-Enter your guess : e
- _  _  _  _  _ e _ 
-
- You have 6 chances left.
-
-Enter your guess : r
- _  _  _  _  _ e _ 
-
- You have 5 chances left.
-
-Enter your guess : s
- _  _  _  _  _ e _ 
-
- You have 4 chances left.
-
-Enter your guess : c
- _  _  _ c _ e _ 
-
- You have 4 chances left.
-
-Enter your guess : o
- _  _  _ c _ e _ 
-
- You have 3 chances left.
-
-Enter your guess : i
- _ i _ c _ e _ 
-
- You have 3 chances left.
-
-Enter your guess : m
- _ i _ c _ e _ 
-
- You have 2 chances left.
-
-Enter your guess : n
- _ inc _ e _ 
-
- You have 2 chances left.
-
-Enter your guess : l
-linc _ e _ 
-
- You have 2 chances left.
-
-Enter your guess : d
-lincde _ 
-
- You have 2 chances left.
-
-Enter your guess : r
-lincde _ 
-
- You have 1 chances left.
-
-Enter your guess : u
-lincde _ 
-
- You have 0 chances left.
-Game Over
-
-'''
